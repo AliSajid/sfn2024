@@ -1,6 +1,7 @@
 # Process the UKA results into a format appropriate for CORAL
 
 library(tidyverse)
+library(plotrix)
 
 
 transform_data <- function(filepath) {
@@ -8,7 +9,8 @@ transform_data <- function(filepath) {
     select(
       UniprotID = `Kinase Uniprot ID`,
       Score = `Median Kinase Statistic`
-    )
+    ) |>
+    mutate(Score = rescale(Score, c(-3, 3)))
 }
 
 
