@@ -45,7 +45,7 @@ ranked_data <- core_dataset |>
   summarise(MeanQuartile = mean(Quartile, na.rm = TRUE), .by = Kinase) |>
   arrange(MeanQuartile)
 
-g <- ggplot(core_dataset, aes(x = LabelPair, y = Kinase, fill = Quartile_factor))
+g <- ggplot(core_dataset, aes(x = Label, y = Kinase, fill = Quartile_factor))
 
 p <- g + geom_tile() +
   scale_fill_manual(
@@ -58,6 +58,6 @@ p <- g + geom_tile() +
   scale_y_discrete(limits = rev(ranked_data$Kinase)) +
   guides(fill = "none")
 
-ggsave("KRSA_Quartile_Rank_by_Dataset.png", plot = p, path = "figures", width = 6.5, height = 9L, units = "in", bg = "white")
+ggsave("KRSA_Quartile_Rank_by_Dataset.png", plot = p, path = "figures", width = 9, height = 9L, units = "in", bg = "white")
 
-ggsave("KRSA_Quartile_Rank_by_Dataset.svg", plot = p, path = "figures", width = 6.5, height = 9L, units = "in", bg = "white")
+ggsave("KRSA_Quartile_Rank_by_Dataset.svg", plot = p, path = "figures", width = 9, height = 9L, units = "in", bg = "white")
