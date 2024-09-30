@@ -16,8 +16,8 @@ editor: source
 toc: true
 params:
   chip_type: "STK" # Change the Chip Type to PTK if needed
-  signal_file: "kinome_data/SignalMinusBackground.txt" # Change the file name to the one you have
-  saturation_file: "kinome_data/SignalSaturation.txt" # Change the file name to the one you have
+  signal_file: "kinome_data/scz_ipsc/_KRSAsOutput_Median_SigmBg_230409171918.txt" # Change the file name to the one you have
+  saturation_file: "kinome_data/scz_ipsc/_KRSAsOutput_Signal_Saturation_230409171919.txt" # Change the file name to the one you have
   threshold: 2 # Change the threshold if necessary
 ---
 
@@ -41,7 +41,7 @@ knitr::opts_chunk$set( # nolint: extraction_operator_linter.
 )
 
 
-run_prefix <- "krsa"
+run_prefix <- "scz_ipsc"
 ```
 
 # Introduction
