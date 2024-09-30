@@ -97,8 +97,7 @@ signal_files <- list.files("results", "dpp", full.names = TRUE) |>
       str_remove(fixed("-dpp")) |>
       str_remove(".csv")
   ) |>
-  keep(~ str_detect(.x, fixed("combined"), negate = TRUE)) |>
-  keep(~ str_detect(.x, fixed("second"), negate = TRUE))
+  keep(~ str_detect(.x, fixed("ad_ipsc")))
 
 signal_names <- names(signal_files)
 

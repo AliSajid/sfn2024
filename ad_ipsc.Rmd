@@ -6,7 +6,7 @@ author: "Cognitive Disorders Research Lab"
 format: 
   pdf:
     documentclass: "scrreport"
-    fig-pos: 'htbp'
+    fig-pos: "htbp"
     classoptions: ["oneside", "letterpaper"]
     number-sections: true
     include-in-header: 

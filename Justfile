@@ -1,13 +1,13 @@
 alias a: all
 
 render:
-  quarto render case_control_E1_pairwise.Rmd
-  quarto render case_control_E2_pairwise.Rmd
-  quarto render case_control_E3_pairwise.Rmd
-  quarto render case_control_E4_pairwise.Rmd
+  quarto render ad_ipsc.Rmd
+  quarto render scz_ipsc.Rmd
+  quarto render scz_region.Rmd
 
 uka:
   Rscript uka_analysis.R
+  Rscript uka_analysis_single_sample.R
 
 creeden:
   Rscript creedenzymatic_analysis.R
