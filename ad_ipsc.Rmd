@@ -16,8 +16,8 @@ editor: source
 toc: true
 params:
   chip_type: "STK" # Change the Chip Type to PTK if needed
-  signal_file: "kinome_data/SignalMinusBackground.txt" # Change the file name to the one you have
-  saturation_file: "kinome_data/SignalSaturation.txt" # Change the file name to the one you have
+  signal_file: "kinome_data/ad_ipsc/SigmBg.txt" # Change the file name to the one you have
+  saturation_file: "kinome_data/ad_ipsc/SigSat.txt" # Change the file name to the one you have
   threshold: 2 # Change the threshold if necessary
 ---
 
@@ -41,7 +41,7 @@ knitr::opts_chunk$set( # nolint: extraction_operator_linter.
 )
 
 
-run_prefix <- "krsa"
+run_prefix <- "ad_ipsc"
 ```
 
 # Introduction
@@ -168,6 +168,7 @@ We will plot the coefficient of variation on both the normal and normalized fits
 #| fig-width: 6
 #| fig-height: 6
 #| fig-cap: "Coefficient of Variation plotted for each peptide across all 4 groups"
+#| eval: false
 
 # Plot a CV figure using the modeled normalized data
 krsa_cv_plot(data_modeled[["normalized"]], clean_peptides)
@@ -225,7 +226,9 @@ krsa_heatmap_grouped(data_modeled[["grouped"]], clean_peptides, scale = "row")
 
 To compare between samples, a two-group comparison is performed. In this case, there are three group comparisons:
 
-- Case 1 vs Control 1
+- F034A vs 021
+- F020A vs 03
+- F033K vs 09
 
 The *Slope_Transformed* ratio between each group, paired by chip, is calculated to the fold change. Based on the fold change, peptides that pass a certain fold change threshold are considered significant hits. Also, quality control steps applied in each comparison to filter out peptides that do not reach specific criteria:
 
@@ -249,10 +252,9 @@ These *Filtering Parameters* (fold change threshold, QC criteria) can be modifie
 
 # Define Groups to be compared
 comparisons <- list(
-  COMP1 = c(groups[[1L]], groups[[4L]]),
-  COMP2 = c(groups[[1L]], groups[[3L]]),
-  COMP3 = c(groups[[2L]], groups[[4L]]),
-  COMP4 = c(groups[[4L]], groups[[3L]])
+  COMP1 = c(groups[[4L]], groups[[1L]]),
+  COMP2 = c(groups[[8L]], groups[[5L]]),
+  COMP3 = c(groups[[12L]], groups[[9L]])
 )
 ```
 
@@ -281,6 +283,56 @@ res <- knitr::knit_child(text = src, quiet = TRUE)
 cat(res, sep = "\n")
 ```
 
+
+```{r}
+#| results: "asis"
+#| echo: FALSE
+#| include: TRUE
+#| label: "childB"
+#| fig-width: 6
+#| fig-height: 6
+#| fig-cap: "Heatmap of pairwise group comparison"
+
+case <- comparisons[["COMP2"]][[1L]]
+ctrl <- comparisons[["COMP2"]][[2L]]
+random <- "B"
+threshold <- params[["threshold"]]
+
+src <- knitr::knit_expand(
+  file = "_comparison.Rmd",
+  case = case, ctrl = ctrl, threshold = threshold,
+  chip = params[["chip_type"]]
+)
+
+res <- knitr::knit_child(text = src, quiet = TRUE)
+
+cat(res, sep = "\n")
+```
+
+```{r}
+#| results: "asis"
+#| echo: FALSE
+#| include: TRUE
+#| label: "childC"
+#| fig-width: 6
+#| fig-height: 6
+#| fig-cap: "Heatmap of pairwise group comparison"
+
+case <- comparisons[["COMP3"]][[1L]]
+ctrl <- comparisons[["COMP3"]][[2L]]
+random <- "C"
+threshold <- params[["threshold"]]
+
+src <- knitr::knit_expand(
+  file = "_comparison.Rmd",
+  case = case, ctrl = ctrl, threshold = threshold,
+  chip = params[["chip_type"]]
+)
+
+res <- knitr::knit_child(text = src, quiet = TRUE)
+
+cat(res, sep = "\n")
+```
 
 # Session Info
 

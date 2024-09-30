@@ -16,8 +16,8 @@ editor: source
 toc: true
 params:
   chip_type: "STK" # Change the Chip Type to PTK if needed
-  signal_file: "kinome_data/region-level/region_KRSA_files_Median_SigmBg_210807100633.txt" # Change the file name to the one you have
-  saturation_file: "kinome_data/region-level/region_KRSA_files_Signal_Saturation_210807100633.txt" # Change the file name to the one you have
+  signal_file: "kinome_data/scz_region/region_KRSA_files_Median_SigmBg_210807100633.txt" # Change the file name to the one you have
+  saturation_file: "kinome_data/scz_region/region_KRSA_files_Signal_Saturation_210807100633.txt" # Change the file name to the one you have
   threshold: 2 # Change the threshold if necessary
 ---
 
@@ -41,7 +41,7 @@ knitr::opts_chunk$set( # nolint: extraction_operator_linter.
 )
 
 
-run_prefix <- "region-level-run"
+run_prefix <- "scz_region"
 ```
 
 # Introduction

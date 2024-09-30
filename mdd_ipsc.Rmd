@@ -16,8 +16,8 @@ editor: source
 toc: true
 params:
   chip_type: "STK" # Change the Chip Type to PTK if needed
-  signal_file: "kinome_data/SignalMinusBackground.txt" # Change the file name to the one you have
-  saturation_file: "kinome_data/SignalSaturation.txt" # Change the file name to the one you have
+  signal_file: "kinome_data/mdd_ipsc/_Export_Median_SigmBg_230524151819.txt" # Change the file name to the one you have
+  saturation_file: "kinome_data/mdd_ipsc/_Export_Signal_Saturation_230524151819.txt" # Change the file name to the one you have
   threshold: 2 # Change the threshold if necessary
 ---
 
