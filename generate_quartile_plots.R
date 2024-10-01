@@ -56,7 +56,7 @@ generate_quartile_plot <- function(datafile) {
   )
 
   sig_kinases <- creeden_data |>
-    dplyr::filter(Method == "KRSA", Qrt >= 4) |>
+    dplyr::filter(Method == "KRSA", Qrt >= 4, Perc > 0.85) |>
     dplyr::pull(hgnc_symbol) |>
     unique()
 
@@ -66,12 +66,12 @@ generate_quartile_plot <- function(datafile) {
 }
 
 creedenzymatic_files <- list.files("results", "creedenzymatic") |>
-  set_names(~ str_remove(.x, "_.*")) |>
+  set_names(~ str_remove(.x, "_creedenzymatic.csv")) |>
   map(generate_quartile_plot) |>
   imap(~ ggsave(
-    str_glue("{.y}-creedenzymatic.png"),
+    str_glue("{.y}-creedenzymatic.svg"),
     path = "figures",
     plot = .x,
     width = 20L,
-    height = 5L
+    height = 3L
   ))
