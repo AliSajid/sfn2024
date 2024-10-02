@@ -62,6 +62,6 @@ p <- g + geom_tile() +
   
   
 
-ggsave("KRSA_Quartile_Rank_by_Dataset.png", plot = p, path = "figures", width = 18, height = 9L, units = "in", bg = "white")
+ggsave("KRSA_Quartile_Rank_by_Dataset.png", plot = p, path = "figures", width = 13, height = 13L, units = "in", bg = "white")
 
-ggsave("KRSA_Quartile_Rank_by_Dataset.svg", plot = p, path = "figures", width = 18, height = 9L, units = "in", bg = "white")
+ggsave("KRSA_Quartile_Rank_by_Dataset.svg", plot = p, path = "figures", width = 13, height = 13L, units = "in", bg = "white")
